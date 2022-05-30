@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AB4B4A632844C29800C2540D /* ColorizedTF.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4B4A622844C29800C2540D /* ColorizedTF.swift */; };
+		AB4B4A652844CC6F00C2540D /* ColorizedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB4B4A642844CC6F00C2540D /* ColorizedController.swift */; };
 		ABE223AD283FF7C6005BC882 /* ColorizedAppSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE223AC283FF7C6005BC882 /* ColorizedAppSwiftUIApp.swift */; };
 		ABE223AF283FF7C6005BC882 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE223AE283FF7C6005BC882 /* ContentView.swift */; };
 		ABE223B1283FF7CA005BC882 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABE223B0283FF7CA005BC882 /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		AB4B4A622844C29800C2540D /* ColorizedTF.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizedTF.swift; sourceTree = "<group>"; };
+		AB4B4A642844CC6F00C2540D /* ColorizedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizedController.swift; sourceTree = "<group>"; };
 		ABE223A9283FF7C6005BC882 /* ColorizedAppSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ColorizedAppSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABE223AC283FF7C6005BC882 /* ColorizedAppSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorizedAppSwiftUIApp.swift; sourceTree = "<group>"; };
 		ABE223AE283FF7C6005BC882 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				ABE223AC283FF7C6005BC882 /* ColorizedAppSwiftUIApp.swift */,
 				ABE223AE283FF7C6005BC882 /* ContentView.swift */,
+				AB4B4A642844CC6F00C2540D /* ColorizedController.swift */,
 				AB4B4A622844C29800C2540D /* ColorizedTF.swift */,
 				ABE223BD2840036B005BC882 /* SliderView.swift */,
 				ABE223BB283FFCFB005BC882 /* RectangleView.swift */,
@@ -152,6 +155,7 @@
 				ABE223BE2840036B005BC882 /* SliderView.swift in Sources */,
 				ABE223AD283FF7C6005BC882 /* ColorizedAppSwiftUIApp.swift in Sources */,
 				ABE223BC283FFCFB005BC882 /* RectangleView.swift in Sources */,
+				AB4B4A652844CC6F00C2540D /* ColorizedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

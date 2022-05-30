@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct RectangleView: View {
+  
   let red: Double
   let green: Double
   let blue: Double
-  
-  
+    
   var body: some View {
     Color(
       red: red / 255,

@@ -8,14 +8,21 @@
 import SwiftUI
 
 struct ColorizedTF: View {
+  
+  @State private var alertPresented = false
+  
   @Binding var colorValue: Double
   @Binding var textFieldValue: String
-  @State private var alertPresented = false
   
   var body: some View {
     TextField(
       "\(lround(colorValue))",
       text: $textFieldValue,
+      onEditingChanged: { isBegin in
+        if isBegin {
+          textFieldValue = ""
+        }
+      },
       onCommit: checkValue
     )
     .bordered()
