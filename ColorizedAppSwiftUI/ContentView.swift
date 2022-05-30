@@ -23,7 +23,7 @@ struct ContentView: View {
       Color(white: 0.8)
         .ignoresSafeArea()
       VStack(spacing: 20) {
-        RectangleView(backgroundColor: Color.init(red: redColorValue / 255, green: greenColorValue / 255, blue: blueColorValue / 255))
+        RectangleView(red: redColorValue, green: greenColorValue, blue: blueColorValue)
         ColorViewController(colorValue: $redColorValue,
                             textFieldValue: $redTextFieldValue,
                             alertPresented: $alertPresented,
@@ -69,6 +69,9 @@ struct ColorViewController: View {
         .foregroundColor(color)
         .frame(width: 35)
       SliderView(sliderValue: $colorValue, color: color)
+        .onChange(of: colorValue) { _ in
+          textFieldValue = "\(lround(colorValue))"
+        }
       ColorizedTextField(colorValue: $colorValue,
                          textFieldValue: $textFieldValue,
                          alertPresented: $alertPresented)
