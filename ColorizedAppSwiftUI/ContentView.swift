@@ -16,8 +16,6 @@ struct ContentView: View {
   @State private var blueTextFieldValue = ""
   @State private var greenTextFieldValue = ""
   
-  @State private var alertPresented = false
-  
   var body: some View {
     ZStack {
       Color(white: 0.8)
@@ -26,21 +24,14 @@ struct ContentView: View {
         RectangleView(red: redColorValue, green: greenColorValue, blue: blueColorValue)
         ColorViewController(colorValue: $redColorValue,
                             textFieldValue: $redTextFieldValue,
-                            alertPresented: $alertPresented,
                             color: .red)
         ColorViewController(colorValue: $blueColorValue,
                             textFieldValue: $blueTextFieldValue,
-                            alertPresented: $alertPresented,
                             color: .blue)
         ColorViewController(colorValue: $greenColorValue,
                             textFieldValue: $greenTextFieldValue,
-                            alertPresented: $alertPresented,
                             color: .green)
         Spacer()
-      }
-      .alert(isPresented: $alertPresented) {
-          Alert(title: Text("Wrong Format!"),
-                message: Text("Enter number from 0 to 255"))
       }
     }
   }
@@ -57,7 +48,6 @@ struct ContentView_Previews: PreviewProvider {
 struct ColorViewController: View {
   @Binding var colorValue: Double
   @Binding var textFieldValue: String
-  @Binding var alertPresented: Bool
   
   let color: Color
   
@@ -72,72 +62,11 @@ struct ColorViewController: View {
         .onChange(of: colorValue) { _ in
           textFieldValue = "\(lround(colorValue))"
         }
-      ColorizedTextField(colorValue: $colorValue,
-                         textFieldValue: $textFieldValue,
-                         alertPresented: $alertPresented)
+      ColorizedTF(colorValue: $colorValue,
+                         textFieldValue: $textFieldValue)
     }
     .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
   }
 }
 
-// MARK: TextField
 
-struct ColorizedTextField: View {
-  @Binding var colorValue: Double
-  @Binding var textFieldValue: String
-  @Binding var alertPresented: Bool
-  
-  var body: some View {
-    TextField(
-      "\(lround(colorValue))",
-      text: $textFieldValue,
-      onEditingChanged: { (isBegin) in
-        guard !isBegin == true else {
-          textFieldValue = ""
-          return
-        }
-        guard let textFieldNumber = Double(textFieldValue) else {
-          alertPresented.toggle()
-          textFieldValue = String(lround(colorValue))
-          return
-        }
-        
-        if textFieldNumber <= 255 && textFieldNumber >= 0 {
-          colorValue = textFieldNumber
-          textFieldValue = String(lround(colorValue))
-        } else {
-          alertPresented.toggle()
-          textFieldValue = String(lround(colorValue))
-        }
-      }
-    )
-    .bordered()
-  }
-}
-
-// MARK: Custom modifier for TextField
-
-struct BorderedViewModifier: ViewModifier {
-  
-  func body(content: Content) -> some View {
-    content
-      .padding(EdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8))
-      .frame(width: 50)
-      .background(Color.white)
-      .foregroundColor(.black)
-      .multilineTextAlignment(.center)
-      .cornerRadius(4)
-      .overlay(
-        RoundedRectangle(cornerRadius: 4)
-          .stroke(lineWidth: 0.5)
-          .foregroundColor(.white)
-      )
-      .shadow(color: Color.gray.opacity(0.4), radius: 3, x: 1, y: 2)
-  }
-}
-
-extension TextField {
-  func bordered() -> some View {
-    ModifiedContent(content: self, modifier: BorderedViewModifier())
-  }
-}
